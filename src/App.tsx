@@ -3,13 +3,16 @@
 import { Outlet } from 'react-router'
 import './App.css'
 import Navbar from './components/Navbar'
+import Container from './components/Container'
 
 function App() {
   return (
     <>
       <div className='flex flex-col py-10 bg-off-white min-h-screen'>
         <Navbar />
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </div>
     </>
   )
