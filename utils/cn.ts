@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import { twMerge } from 'tailwind-merge';
 
-export default function cn(...inputs) {
-  return twMerge(cx(inputs));
+export default function cn(...inputs: any[]): string {
+  return twMerge(cx(...inputs));
 }
