@@ -7,7 +7,7 @@ import redCircle from "../assets/red-circle.svg";
 const Navbar = () => {
   return (
     <Container className="w-full flex justify-between mb-10">
-      <div className="text-4xl">
+      <div className="text-2xl sm:text-4xl">
         <Link to="/" className="group relative">
           Chiara Bellesia
           <img
@@ -17,13 +17,13 @@ const Navbar = () => {
           />
         </Link>
       </div>
-      <div className="text-3xl flex justify-between gap-8">
+      <div className="text-sm sm:text-3xl flex justify-between items-center gap-8">
         <Link to="about" className="group relative">
           about
           <img
             src={orangeArrow}
             alt=""
-            className="absolute bottom-2 right-20 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100"
+            className="absolute bottom-1 right-12 sm:right-20 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100"
           />
         </Link>
         <span>/</span>
@@ -32,7 +32,7 @@ const Navbar = () => {
           <img
             src={redCircle}
             alt=""
-            className="absolute -bottom-2 scale-125 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100"
+            className="absolute -bottom-1 sm:-bottom-3 scale-125 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100"
           />
         </Link>
       </div>
