@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router";
 import axios from "axios";
-import { Link } from "react-router";
-
-type ImageItem = {
-  id: string;
-  image: CloudImgObj;
-  heightPercent: number;
-};
-
-type CloudImgObj = {
-  public_id: string;
-  image_url: string;
-  secure_url: string;
-  asset_folder: string;
-  filename: string;
-  metadata: {
-    date: string;
-    text: string;
-  };
-  tags: string[];
-};
+import type { ImageItem, CloudImgObj } from "../types";
 
 const shuffle = <T,>(array: T[]): T[] => {
   const arr = [...array];
@@ -47,7 +29,10 @@ const distributeIntoColumns = (
 ): ImageItem[][] => {
   const shuffled = shuffle(images);
 
-  const columns: CloudImgObj[][] = Array.from({ length: columnCount }, () => []);
+  const columns: CloudImgObj[][] = Array.from(
+    { length: columnCount },
+    () => []
+  );
 
   shuffled.forEach((img, i) => {
     columns[i % columnCount].push(img);
@@ -57,11 +42,14 @@ const distributeIntoColumns = (
 };
 
 const Grid = ({ genre, number }: { genre: string; number: number }) => {
+  const hasLoadedRef = useRef(false);
   const [columns, setColumns] = useState<ImageItem[][]>([]);
 
-  // console.log({columns})
-
   useEffect(() => {
+    if (hasLoadedRef.current) return;
+
+    hasLoadedRef.current = true;
+
     axios
       .get(
         `${
@@ -69,12 +57,12 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
         }api/images/by-folder?folder=WEBSITE/${genre.toUpperCase()}`
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res.data);
         setColumns(distributeIntoColumns(res.data, 3));
         // if mobile -> setColumns(distributeIntoColumns(res.data, 1));
       })
       .catch((err) => console.error("Error fetching images:", err));
-  }, [genre, number]);
+  }, [genre, number, columns]);
 
   return (
     <div className="w-full h-200 grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
@@ -90,24 +78,36 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
               }}
               className="relative overflow-hidden"
             >
-              <Link to={item.image.metadata?.text}>
+              <NavLink to={item.image.metadata?.text.replace(/ /g, "_")} state={{item: item.image}}>
                 <img
                   src={item.image.secure_url}
                   alt={item.image.metadata?.text ?? ""}
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-              </Link>
+              </NavLink>
             </div>
           ))}
         </div>
       ))}
-      <div className="absolute rotate-270 -left-3.5 top-20"><p className="w-2">{genre}</p></div>
-      <div className="absolute rotate-270 -left-3.5 top-90"><p className="w-2">{genre}</p></div>
-      <div className="absolute rotate-270 -left-3.5 top-160"><p className="w-2">{genre}</p></div>
-      <div className="absolute rotate-90 -right-3 top-20"><p className="w-2">{genre}</p></div>
-      <div className="absolute rotate-90 -right-3 top-90"><p className="w-2">{genre}</p></div>
-      <div className="absolute rotate-90 -right-3 top-160"><p className="w-2">{genre}</p></div>
+      <div className="absolute rotate-270 -left-3.5 top-20">
+        <p className="w-2">{genre}</p>
+      </div>
+      <div className="absolute rotate-270 -left-3.5 top-90">
+        <p className="w-2">{genre}</p>
+      </div>
+      <div className="absolute rotate-270 -left-3.5 top-160">
+        <p className="w-2">{genre}</p>
+      </div>
+      <div className="absolute rotate-90 -right-3 top-20">
+        <p className="w-2">{genre}</p>
+      </div>
+      <div className="absolute rotate-90 -right-3 top-90">
+        <p className="w-2">{genre}</p>
+      </div>
+      <div className="absolute rotate-90 -right-3 top-160">
+        <p className="w-2">{genre}</p>
+      </div>
     </div>
   );
 };
