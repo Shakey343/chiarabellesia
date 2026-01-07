@@ -15,7 +15,6 @@ export type CloudImgObj = {
     date: string;
     text: string;
     title: string;
-    description: string;
   };
   tags: string[];
 };

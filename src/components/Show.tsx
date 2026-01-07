@@ -14,15 +14,15 @@ const Show = () => {
   return (
     <div className="mt-10">
       <h2 className="text-3xl mb-4">
-        {item.metadata.text || item.metadata.title}
+        {item.metadata.title || item.metadata.text}
       </h2>
       <div className="grid grid-cols-12 gap-10">
         <img
           src={item.secure_url}
-          alt={item.metadata.text || item.metadata.title}
+          alt={item.metadata.title || item.metadata.text}
           className="col-span-9"
         />
-        <div className="col-span-3">{item.metadata.description || "Kiki - please add a description ☺️"}</div>
+        <div className="col-span-3">{item.metadata.text || ""}</div>
       </div>
     </div>
   );

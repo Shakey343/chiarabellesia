@@ -56,7 +56,7 @@ const Index = () => {
         {narrative.map((img) => (
           <li key={img.asset_id}>
             <NavLink
-              to={`/${img.metadata?.text?.replace(/ /g, "_")}`}
+              to={`/${img.metadata?.title?.replace(/ /g, "_")}`}
               state={{ item: img }}
             >
               {img.metadata?.title || img.metadata?.text}

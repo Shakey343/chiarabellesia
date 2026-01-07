@@ -91,17 +91,17 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
                 >
                   <NavLink
                     to={(
-                      item.image.metadata.text ?? item.image.metadata.title
+                      item.image.metadata.title || item.image.metadata.text
                     ).replace(/ /g, "_")}
                     state={{ item: item.image }}
                   >
                     <img
                       src={item.image.secure_url}
-                      alt={item.image.metadata?.text ?? ""}
+                      alt={item.image.metadata?.title || ""}
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
-                    <span className="absolute hidden group-hover:block -bottom-4 text-xs">{item.image.metadata?.text || item.image.metadata?.title}</span>
+                    <span className="absolute hidden group-hover:block left-10 -bottom-3.5 text-xs">{item.image.metadata?.title || ""}</span>
                   </NavLink>
                 </div>
               )
