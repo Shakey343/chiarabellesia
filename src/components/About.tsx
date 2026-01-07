@@ -11,7 +11,7 @@ const About = () => {
           className="mb-10"
         />
         <a
-          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&amp;body=Hi%Chiara,"
+          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
           target="_blank"
           title="Email"
           className="hover:opacity-80 hidden md:block lg:hidden"
@@ -32,7 +32,7 @@ const About = () => {
           projects.
         </p>
         <a
-          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&amp;body=Hi%Chiara,"
+          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
           target="_blank"
           title="Email"
           className="hover:opacity-80 hidden lg:block"
