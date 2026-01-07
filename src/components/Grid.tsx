@@ -45,6 +45,8 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
   const hasLoadedRef = useRef(false);
   const [columns, setColumns] = useState<ImageItem[][]>([]);
 
+  const smHeight = `${Number(number) * 400}px`
+
   useEffect(() => {
     if (hasLoadedRef.current) return;
 
@@ -65,7 +67,14 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
   }, [genre, columns]);
 
   return (
-    <div className={`w-full h-${number * 100} sm:h-200 grid grid-cols-1 sm:grid-cols-3 gap-4 relative`}>
+    <div
+      style={
+        {
+          "--sm-height": smHeight,
+        } as React.CSSProperties
+      }
+      className="w-full h-(--sm-height) sm:h-200 grid grid-cols-1 sm:grid-cols-3 gap-4 relative"
+    >
       {columns.map((column, colIndex) => (
         <div key={colIndex} className="flex flex-col gap-4">
           {column.map((item, index) => (
