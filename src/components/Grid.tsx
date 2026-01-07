@@ -78,7 +78,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
               }}
               className="relative overflow-hidden"
             >
-              <NavLink to={item.image.metadata?.text.replace(/ /g, "_")} state={{item: item.image}}>
+              <NavLink to={(item.image.metadata?.text ?? "").replace(/ /g, "_")} state={{item: item.image}}>
                 <img
                   src={item.image.secure_url}
                   alt={item.image.metadata?.text ?? ""}
