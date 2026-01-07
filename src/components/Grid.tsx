@@ -62,14 +62,14 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
         // if mobile -> setColumns(distributeIntoColumns(res.data, 1));
       })
       .catch((err) => console.error("Error fetching images:", err));
-  }, [genre, number, columns]);
+  }, [genre, columns]);
 
   return (
-    <div className="w-full h-200 grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
+    <div className={`w-full h-${number * 100} sm:h-200 grid grid-cols-1 sm:grid-cols-3 gap-4 relative`}>
       {columns.map((column, colIndex) => (
-        <div key={colIndex} className="flex flex-col gap-4 h-full">
+        <div key={colIndex} className="flex flex-col gap-4">
           {column.map((item, index) => (
-            <div
+              item.image.metadata && <div
               key={item.id}
               style={{
                 height: `${item.heightPercent}%`,
@@ -78,7 +78,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
               }}
               className="relative overflow-hidden"
             >
-              <NavLink to={(item.image.metadata?.text ?? "").replace(/ /g, "_")} state={{item: item.image}}>
+              <NavLink to={(item.image.metadata.text ?? item.image.metadata.title).replace(/ /g, "_")} state={{item: item.image}}>
                 <img
                   src={item.image.secure_url}
                   alt={item.image.metadata?.text ?? ""}
