@@ -22,12 +22,7 @@ const Show = () => {
           alt={item.metadata.text || item.metadata.title}
           className="col-span-9"
         />
-        <div className="col-span-3">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
-          provident nesciunt enim, ut saepe laudantium quaerat, facilis mollitia
-          quas perferendis ab accusantium, corporis nostrum dolorum culpa
-          quisquam magni suscipit modi.
-        </div>
+        <div className="col-span-3">{item.metadata.description || "Kiki - please add a description ☺️"}</div>
       </div>
     </div>
   );

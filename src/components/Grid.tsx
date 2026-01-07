@@ -45,7 +45,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
   const hasLoadedRef = useRef(false);
   const [columns, setColumns] = useState<ImageItem[][]>([]);
 
-  const smHeight = `${Number(number) * 400}px`
+  const smHeight = `${Number(number) * 400}px`;
 
   useEffect(() => {
     if (hasLoadedRef.current) return;
@@ -77,26 +77,35 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
     >
       {columns.map((column, colIndex) => (
         <div key={colIndex} className="flex flex-col gap-4">
-          {column.map((item, index) => (
-              item.image.metadata && <div
-              key={item.id}
-              style={{
-                height: `${item.heightPercent}%`,
-                // height: onmouseover ? '100%' : `${item.heightPercent}%`,
-                paddingBottom: index !== column.length - 1 ? "0.5rem" : "0",
-              }}
-              className="relative overflow-hidden"
-            >
-              <NavLink to={(item.image.metadata.text ?? item.image.metadata.title).replace(/ /g, "_")} state={{item: item.image}}>
-                <img
-                  src={item.image.secure_url}
-                  alt={item.image.metadata?.text ?? ""}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </NavLink>
-            </div>
-          ))}
+          {column.map(
+            (item, index) =>
+              item.image.metadata && (
+                <div
+                  key={item.id}
+                  style={{
+                    height: `${item.heightPercent}%`,
+                    // height: onmouseover ? '100%' : `${item.heightPercent}%`,
+                    paddingBottom: index !== column.length - 1 ? "0.5rem" : "0",
+                  }}
+                  className="relative opacity-100 hover:opacity-80 transition-all group"
+                >
+                  <NavLink
+                    to={(
+                      item.image.metadata.text ?? item.image.metadata.title
+                    ).replace(/ /g, "_")}
+                    state={{ item: item.image }}
+                  >
+                    <img
+                      src={item.image.secure_url}
+                      alt={item.image.metadata?.text ?? ""}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <span className="absolute hidden group-hover:block -bottom-4 text-xs">{item.image.metadata?.text || item.image.metadata?.title}</span>
+                  </NavLink>
+                </div>
+              )
+          )}
         </div>
       ))}
       <div className="absolute rotate-270 -left-3.5 top-20">
