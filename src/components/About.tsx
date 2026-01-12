@@ -11,12 +11,12 @@ const About = () => {
           className="mb-10"
         />
         <a
-          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
+          href="mailto:chiara.bellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
           target="_blank"
           title="Email"
           className="hover:opacity-80 hidden md:block lg:hidden"
         >
-          chiarabellesia@gmail.com
+          chiara.bellesia@gmail.com
         </a>
       </div>
       <div className="lg:col-span-7 flex flex-col justify-between gap-20">
@@ -32,12 +32,12 @@ const About = () => {
           projects.
         </p>
         <a
-          href="mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
+          href="mailto:chiara.bellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A"
           target="_blank"
           title="Email"
           className="hover:opacity-80 hidden lg:block"
         >
-          chiarabellesia@gmail.com
+          chiara.bellesia@gmail.com
         </a>
         <Socials />
       </div>
