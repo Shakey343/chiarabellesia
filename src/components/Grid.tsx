@@ -56,7 +56,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
       .get(
         `${
           import.meta.env.VITE_BACKEND_URL
-        }api/images/by-folder?folder=WEBSITE/${genre.toUpperCase()}`
+        }api/images/by-folder?folder=WEBSITE/${genre.toUpperCase()}&tag=homepage`
       )
       .then((res) => {
         // console.log(res.data);

@@ -18,7 +18,7 @@ const Index = () => {
   useEffect(() => {
     axios
       .get<CloudImgObj[]>(
-        `${import.meta.env.VITE_BACKEND_URL}api/images/by-tag?tag=homepage`
+        `${import.meta.env.VITE_BACKEND_URL}api/images/by-tag?tag=index`
       )
       .then((res) => {
         const grouped = res.data.reduce<Record<Category, CloudImgObj[]>>(
