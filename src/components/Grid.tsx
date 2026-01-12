@@ -87,7 +87,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
                     // height: onmouseover ? '100%' : `${item.heightPercent}%`,
                     paddingBottom: index !== column.length - 1 ? "0.5rem" : "0",
                   }}
-                  className="relative opacity-100 hover:opacity-80 transition-all group"
+                  className="relative group"
                 >
                   <NavLink
                     to={(
@@ -99,7 +99,7 @@ const Grid = ({ genre, number }: { genre: string; number: number }) => {
                       src={item.image.secure_url}
                       alt={item.image.metadata?.title || ""}
                       loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover opacity-100 hover:opacity-80 transition-all"
                     />
                     <span className="absolute hidden group-hover:block left-10 -bottom-3.5 text-xs">{item.image.metadata?.title || ""}</span>
                   </NavLink>
