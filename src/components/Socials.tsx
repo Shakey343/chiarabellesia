@@ -12,7 +12,7 @@ const links = [
     icon: faLinkedin,
   },
   {
-    link: "mailto:chiarabellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A",
+    link: "mailto:chiara.bellesia@gmail.com?subject=Editing%20Enquiry&body=Hello%20Chiara,%0A%0A%0A",
     icon: faEnvelope,
   },
 ];
